@@ -11,14 +11,14 @@ export default async (req, res) => {
 
   let indexUsers = JSON.parse(await read(usersIndex))
   if (Object.keys(indexUsers).includes(login)) {
-    res.status(403).json({ ok: false, error: "account is found" })
+    res.status(403).json({ ok: false, error: "Account already exists" })
   }
-  const allowedSymbols = /^[a-z0-9_-]+$/
+  const allowedSymbols = /^[a-z0-9_-*]+$/
   if (!allowedSymbols.test(login)) {
-    res.status(400).json({ ok: false, error: "Unsupported symbols", "supported": "a-z, A-Z, 0-9, _, -" })
+    res.status(400).json({ ok: false, error: "Unsupported symbols. Only use letters, numbers, _, - and * symbols", "supported": "a-z, A-Z, 0-9, _, -" })
   }
   if (login.length < 3 || login.length > 23) {
-    res.status(400).json({ ok: false, error: "account length limit" })
+    res.status(400).json({ ok: false, error: "This username is too long! Only use usernames under 24 chars" })
   }
   const user = new User({ username: login, password, id: Object.keys(indexUsers).length + 2 })
   user.session = await new Session({ user: user.username }).token()
