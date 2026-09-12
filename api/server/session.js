@@ -11,15 +11,16 @@ export default async (req, res) => {
 
   let indexUsers = JSON.parse(await read(usersIndex))
   if (!Object.keys(indexUsers).includes(login)) {
-    res.status(403).json({ ok: false, error: "account not found" })
+    res.status(403).json({ ok: false, error: "Account doesnt exist
+      " })
   }
   const user = new User(indexUsers[login])
   if (user.session !== session) {
-    res.status(403).json({ ok: false, error: "fake token" })
+    res.status(403).json({ ok: false, error: "Invalid token" })
   }
   const isActual = await user.checkToken()
   if (!checkActual) {
-    res.status(403).json({ ok: false, error: "token is old" })
+    res.status(403).json({ ok: false, error: "Outdated token" })
   }
   const userJSON = user.JSON
 
