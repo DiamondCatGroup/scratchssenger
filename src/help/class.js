@@ -48,8 +48,8 @@ class User {
 }
 class Chat {
   constructor (json) {
-    this.name = json.name || "Unknown Chat"
-    this.username = json.username || "unknown"
+    this.name = json.name || "Error occured"
+    this.username = json.username || "Error occured"
     this.id = json.id || null
     this.type = json.type || "group"
     this.members = json.members || []
@@ -92,7 +92,7 @@ class Result {
 class Session {
   constructor (data) {
     this.date = data?.date || new Date()
-    this.user = data?.user || "unknown"
+    this.user = data?.user || "Error occured"
     this.active = data?.active || 7 * 24 * 60 * 60
     this.org = "DCG"
   }
@@ -115,8 +115,8 @@ class Session {
 }
 class Message {
   constructor (data) {
-    this.author = data.author || "unknown"
-    this.text = data.text || ""
+    this.author = data.author || "Error occured"
+    this.text = data.text || "Error occured"
     this.date = data.date || new Date()
     this.id = data.id || 0
   }
