@@ -75,23 +75,7 @@
       "use": "@vercel/node"
     },
     {
-      "src": "api/server/desktop.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "api/server/register.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "api/server/login.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "api/server/session.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "api/server/session-chats.js",
+      "src": "api/desktop.js",
       "use": "@vercel/node"
     }
   ],
@@ -178,23 +162,7 @@
     },
     {
       "src": "/desktop/(.*)",
-      "dest": "/api/server/desktop.js?path=$1"
-    },
-    {
-      "src": "/api/register/",
-      "dest": "/api/server/register.js"
-    },
-    {
-      "src": "/api/login/",
-      "dest": "/api/server/login.js"
-    },
-    {
-      "src": "/api/session/",
-      "dest": "/api/server/session.js"
-    },
-    {
-      "src": "/api/session/chats/",
-      "dest": "/api/server/session-chats.js"
+      "dest": "/api/desktop.js?path=$1"
     }
   ]
 }
